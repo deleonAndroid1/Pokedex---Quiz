@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Pokedex - Volley</string>
+    <string name="poke_items">Items</string>
 </resources>

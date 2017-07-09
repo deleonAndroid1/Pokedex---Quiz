@@ -2,14 +2,14 @@ package com.training.android.pokedex_volley.Adapter;
 
 
 import android.content.Context;
-import android.content.Intent;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.training.android.pokedex_volley.Activities.PokemonDetails;
+import com.squareup.picasso.Picasso;
 import com.training.android.pokedex_volley.DataModel.Pokemon_Model;
 import com.training.android.pokedex_volley.R;
 
@@ -43,15 +43,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         current = models.get(position);
 
         holder.mtvPokeName.setText(current.getPokemonName());
+        Picasso.with(context)
+                .load(current.getUrl())
+                .resize(100,100)
+                .into(holder.mimgPokeImg);
 
-        holder.itemView.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent i = new Intent(context, PokemonDetails.class);
-                i.putExtra("url", models.get(position).getUrl());
-                context.startActivity(i);
-            }
-        });
     }
 
     @Override
@@ -72,9 +68,11 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     static class ViewHolder extends RecyclerView.ViewHolder {
 
         TextView mtvPokeName;
+        ImageView mimgPokeImg;
 
         ViewHolder(View view) {
             super(view);
+            mimgPokeImg = itemView.findViewById(R.id.imgPokemon);
             mtvPokeName = itemView.findViewById(R.id.tvPokeName);
         }
     }

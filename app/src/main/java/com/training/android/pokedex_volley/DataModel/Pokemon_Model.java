@@ -14,6 +14,10 @@ public class Pokemon_Model {
         PokemonName = pokemonName;
     }
 
+    public Pokemon_Model(String pokemonName) {
+        PokemonName = pokemonName;
+    }
+
     public String getUrl() {
         return url;
     }
